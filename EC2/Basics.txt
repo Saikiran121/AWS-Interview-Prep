@@ -149,3 +149,28 @@
 30. How do you ensure high availability for EC2 workloads?
     - Deploy instances across multiple Availability Zones, use Elastic Load Balancers, Auto Scaling Groups, and monitor with CloudWatch
 
+
+31. What is user data in EC2?  
+    - User data allows you to provide scripts or configuration data that run automatically when the instance launches, useful for installing 
+      software or configuring the instance
+
+
+32. What is the difference between a public and a private IP address in EC2?
+    - A public IP allows internet access to the instance, while a private IP is used for internal communication within the VPC
+
+
+33. How do you secure your EC2 instances?
+    - Configure security groups, use key pairs for SSH access, regularly update the OS, and restrict inbound/outbound traffic as needed
+
+
+34. If CPU usage on your EC2 instance exceeds 80%, how would you handle it?
+    - Set up an Auto Scaling group to launch additional instances and use a load balancer to distribute traffic
+
+
+35. What are EC2 Availability Zones and Regions? Why are they important?
+    - Availability Zones are isolated locations within an AWS Region
+    - Regions consist of multiple Availability Zones.
+    - This design ensures high availability and fault tolerance—failure in one zone doesn't impact others, and distributing resources across zones 
+      reduces latency and increases resilience.
+
+
