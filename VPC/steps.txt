@@ -1,0 +1,34 @@
+VPC --> Create VPC and More --> Select a name --> Select IPv4 CIDR Range --> No. of AZ's (2) --> No. of Public Subnets (2) --> 
+No. of Private Subnets (2) --> NAT Gateways (1 per AZ) --> VPC Endpoints (none) --> Create VPC
+
+Launch Template --> Create Launch Template --> Template Version Template (POC for private subnet) --> Select Ubuntu t2.micro --> Select Key Pair 
+--> Create Securiy Group of inbound rules (22 and 8000 fron anywhere) and select the created VPC --> Create Launch Template
+
+AutoScaling --> Name (aws-prod-example) --> Select Launch Template --> Next --> Choose VPC (Created VPC) --> Select AZ and Subnets (Select 2
+Private Subnets) --> Next --> Load Balancing (None) --> Health Check (300) --> Next -> Desired Capacity (2), Min Capacity (1) and 
+Max Desired Capacity (4) --> Next --> Create AutoScaling Group
+
+For Bastion Host 
+EC2 --> Launch Instance --> Name --> Select OS (Ubuntu) --> Select type (t2.micro) --> Select Key Pair --> Select the created VPC --> 
+Assign a public subnet --> Auto assign public IP --> Create a SG (22) --> Launch 
+
+COPY the pem file 
+scp -i /home/user/Downloads/terraform.pem /home/user/Downloads/terraform.pem ubuntu@15.206.124.91:/home/ubuntu
+
+Next SSH into the bastion-host instance 
+ssh -i terraform.pem ubuntu@15.206.124.91 
+
+After ssh into the bastion host verify the pem file is present or not and then ssh into one of the instances using private IP 
+ssh -i terraform.pem ubuntu@10.0.152.181
+
+create a simple html page 
+python3 -m http.server 8000
+
+
+Create Target Group -->  Select Target Type as Instances --> Target Group Name (aws-prod-example) --> Protocol:port HTTP 8000 --> IP Address type 
+IPv4 --> Select the created VPC -->  Health Checks --> health check Protocol (HTTP) --> Health Check Path (/) --> Next --> Register Targets -->
+Select both the instances (private ones) --> Include as pending below -->  Create Target Group
+
+goto aws --> Search for Load Balancer --> Application Load Balancer --> Load Balancer Name (aws-prod-example) --> Select Internet-facing 
+--> Load balancer IP address type --> IPv4 --> Select the Created VPC --> Select both the subnets (public ones) --> Select the Security
+Group --> Listeners and Routing --> HTTP:80 and Select the created Target Group --> Create Load Balancer 

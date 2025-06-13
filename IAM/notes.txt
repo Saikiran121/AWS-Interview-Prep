@@ -1,0 +1,82 @@
+01. ROOT User 
+    - The ROOT user is the very first and most powerful identity created when you setup an AWS Account.
+    - It uses the email address you registered with and has unrestricted access to everything in your AWS Account all services,
+      resources, billing and account settings.
+    - Because it has full control, it is very sensitive and should be used only for essential tasks like changing billing info, 
+      closing the account, or managing MFA settings.
+    - For everyday work, you should avoid using the root user and instead use IAM users with appropriate permissions.
+    - For everyday work, you should avoid using the root user and instead use IAM users with appropriate permissions.
+    - There is only one root user per AWS account
+
+
+02. IAM User
+    - An IAM User is like permanent identity for a specific person or application inside your AWS Account.
+    - It has its own long-term credentials (like username password and access keys) that allow it to directly log into AWS or make API requests.
+    - You can create IAM users for people or services that need ongoing, direct access to AWS resources.
+    - Example: You create an IAM user for a developer who needs to manage EC2 instances or S3 buckets regularly.
+    - Think of it as a personal account with a fixed key to AWS.
+
+
+03. IAM Role 
+    - An IAM Role is like a temporary identity with a set of permissions that can be assumed by trusted entities such as IAM users, AWS Services 
+      (like EC2), or external users.
+    - It does not have permanent credentials (no password no access keys). Instead when someone assumes the role, AWS provides temporary security 
+      credentials for a limited time.
+    - Roles are used to delegate access without sharing long-term credentials and are great for temporary or cross-account access.
+    - Example: An EC2 instance assumes a role to access an S3 bucket without embedding keys in the instance. Or a user assumes a role to get 
+      elevated permissions for a short task.
+    - Think of it as borrowing a key for a short time to do a specific job.
+
+
+04. IAM Groups 
+    - An IAM Group is a collection of IAM users grouped together to simplify permission management.
+    - Instead of assigning permissions to each user individually, you assign policies to a group, and all users in that group inherit those 
+      permissions.
+    - For example, you might create a group called "Developers" and give it permissions to access certain AWS services. Every user added to 
+      this group automatically gets those permissions.
+    - IAM groups help manage permissions efficiently, especially when you have many users with similar roles
+
+
+05. IAM Policies 
+    - An IAM policy is like a rulebook that tells AWS who can do what with which resources. It defines permissions what actions are allowed or 
+      denied for users, groups, or roles on AWS services like S3, EC2, DynamoDB, etc.
+    - When someone tries to perform an action in AWS, AWS checks the policies attached to their identity to decide if the action is allowed 
+      or denied.
+
+
+06. Key Points About IAM Policies
+    - Policies are written in JSON format and specify:
+        a. Who (which user, group, or role) the policy applies to.
+        b. What actions are allowed or denied (e.g., read, write, delete).
+        c. Which resources the actions apply to (e.g., a specific S3 bucket).
+        d. Optional conditions that further restrict when or how permissions apply.
+    - Permissions are explicit: If a permission is not explicitly allowed, it is denied by default.
+
+
+07. Types of IAM Policies
+    a. AWS Managed Policies
+        - Pre-built by AWS for common use cases (e.g., full access to S3 or read-only access to EC2).
+        - Easy to use and follow AWS best practices.
+    
+    b. Customer Managed Policies
+        - Created and managed by you to fit your specific business needs.
+        - Can be based on AWS managed policies but customized.
+    
+    c. Inline Policies
+        - Directly attached to a single user, group, or role.
+        - Unique to that entity and not reusable elsewhere.
+        - Useful for very specific, one-off permission needs but can be harder to manage at scale.
+
+
+08. Best Practices 
+    - Least Privilege: Grant only the permissions required for each user or service to perform their tasks
+    - Use Groups and Roles: Assign permissions to groups or roles, not directly to users, for easier management
+    - Enforce MFA: Require MFA for all users, especially those with elevated privileges
+    - Avoid Root User for Daily Tasks: Use the root account only for essential account-level operations
+    - Rotate Credentials: Regularly change passwords and access keys to minimize risk
+    - Review and Audit Permissions: Periodically check permissions and remove unnecessary access
+    - Avoid Inline Policies: Use managed policies for consistency and easier administration
+    - Leverage Automation: Use tools like CloudFormation, Terraform, or Pulumi to manage IAM at scale
+    - Separate Duties: Assign roles to ensure no single user has excessive privileges
+    - Zero-Trust Approach: Always verify and never assume trust within your AWS environment
+

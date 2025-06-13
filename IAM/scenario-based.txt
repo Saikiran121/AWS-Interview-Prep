@@ -1,0 +1,47 @@
+01. A developer needs access to a specific S3 bucket but should not be able to delete objects. How do you achieve this?
+    - Attach a custom IAM policy to the developer’s user or group that allows s3:GetObject and s3:PutObject for that bucket, but does not 
+      include s3:DeleteObject. This enforces least privilege.
+
+
+02. You want to allow an EC2 instance to access an S3 bucket without using access keys. What’s the best approach?
+    - Assign an IAM role with the necessary S3 permissions to the EC2 instance. The instance will use the role’s temporary credentials to 
+      access S3 securely
+
+
+03. How can you grant temporary access to a consultant for 7 days to access a DynamoDB table?
+    - Create an IAM role with required DynamoDB permissions. Use AWS STS to generate temporary credentials for the consultant, 
+      specifying a session duration of up to 7 days.
+
+
+04. A user needs read-only access to all AWS services. What’s the simplest way to grant this?
+    - Attach the AWS managed policy ReadOnlyAccess to the user or their group.
+
+
+05. How would you enable multi-factor authentication (MFA) for all IAM users in your account?
+    - Enable MFA for each IAM user and enforce MFA required policies, possibly using an AWS Config rule to ensure compliance.
+
+
+06. How do you allow users from your company’s Active Directory to access the AWS Console without creating IAM users for each?
+    - Configure identity federation using SAML with AWS IAM roles, allowing users to assume roles after authenticating via Active Directory
+
+
+07. You want to restrict a developer to launch only t2.micro EC2 instances. How do you enforce this?
+    - Attach a policy to the developer that allows ec2:RunInstances only with a condition specifying the InstanceType as t2.micro
+
+
+08. How do you audit which IAM users have not used their credentials in the last 90 days?
+    - Generate and review the IAM Credential Report, which shows last-used information for passwords and access keys
+
+
+09. What is the best way to provide cross-account access to an S3 bucket?
+    - Create an IAM role in the target account with S3 permissions and allow the source account’s users to assume that role. Alternatively, use 
+      an S3 bucket policy granting access to the source account’s principals.
+
+
+10. How can you enforce the principle of least privilege in your IAM policies?
+    - Grant only the specific permissions required for each user, group, or role, regularly review and remove unnecessary permissions, and use 
+      IAM Access Advisor to audit usage
+
+
+11. 
+

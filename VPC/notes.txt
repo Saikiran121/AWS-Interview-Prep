@@ -1,0 +1,66 @@
+01. What is AWS VPC?
+    - Amazone VPC (Virtual Private Cloud) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources
+      (like EC2) in a custom-defined network.
+    
+    - Its your own private datacenter in AWS with complete control over IP ranges, subnets, route tables and security settings.
+
+02. What is CIDR blocks?
+    - IP Address range for your VPC in CIDR notation (eg: 10.0.0.0/16)
+    - Can range between /16 and /28
+
+03. Subnets 
+    - Divide your VPC CIDR block into smaller subnets
+    - Public Subnet: Has route to internet via IGW
+    - Private Subnet: No direct route to internet.
+
+04. Route table
+    - Control traffic routing within the VPC.
+    - Each subnet must be associated with one route table
+
+05. Internet Gateway 
+    - Allows instances in public subnets to access the internet.
+
+06. NAT Gateway / NAT Instances 
+    - Allows Private Subnet instances to initiate outbound traffic to the internet.
+
+07. Elastic IP 
+    - Static public IP address that can be attached to instances or NAT Gateways.
+
+08. Security Groups 
+    - Virtual firewalls for EC2 instances.
+    - Operate at the instance level. 
+
+09. Network ACLs (NACLs)
+    - Firewall at the subnet levels 
+    - stateless: inbound/outbound rules must be explicitly defined.
+
+10. VPC Peering 
+    - Connects two VPCs privately, across accounts or regions.
+
+11. Endpoints (Gateway & Interface)
+    - Private connection between VPC and AWS Services (S3, DynamoDB etc.)
+
+12. Bastion Host (Jump Server)
+    - A Bastion Host (also known as Jump Server) is a special-purpose server used to provide controlled access to private network resources
+      (such as EC2 instances in private subnet) from an external network like the internet
+    
+    a. What is Bastion Host?
+        - A Bastion Host is a Hardened server that acts as a Gateway between a secure private network (like VPC private subnet) and the internet
+        - It is typically deployed in a public subnet with a public IP address and strict access controls.
+        - Once connected to a Bastion Host, you can SSH into private instances within the VPC.
+    
+    b. Use Cases 
+        1. Secure SSH Access to Private EC2s
+            - Allows devs/admins to connect to private servers without exposing them directly to the internet.
+        
+        2. Debugging and Troubleshooting 
+            - Safely access private environments to investigate the issue 
+        
+        3. Audit and Monitoring
+            - All access passes through one Gateway, allowing easy Monitoring/logging.
+        
+        4. Multi-layered Security
+            - Acts as a checkpoint to prevent direct exposure of the internal resources.
+        
+        5. Hybrid environments
+            - In hybrid clouds, it can serve as a bridge to on-prem resources via VPN/Direct connect

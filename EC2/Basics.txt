@@ -1,0 +1,41 @@
+01. What is Amazon EC2 and what are its core features?
+    - Amazon EC2 is a web service that provides resizable compute capacity in the cloud, allowing users to launch and manage virtual servers 
+      (instances) with flexible configurations.
+    
+    - Features 
+        a. On-demand scalability
+        b. various instance types
+        c. support for persistent and ephemeral storage
+        d. security groups
+        e. key pairs
+        f. integration with other AWS Services 
+
+
+02. How do you launch and connect to an EC2 Instance?
+    - You can launch EC2 instance via tha AWS Management Console, CLI, or SDK by selecting an AMI, instance type, and configuring network and 
+      storage. 
+    - Connect using SSH for Linux or RDP for Windows, using the appropriate key pair.
+
+
+03. What information can you view and manage from the EC2 Dashboard?
+    - The EC2 Dashboard provides an overview of all your EC2 resources, including running instances, volumes, snapshots, Elastic IPs, and 
+      Security Groups. It allows you to monitor resource usage and status across all regions.
+
+
+04. How does EC2 Global View help in multi-region management?
+    - EC2 Global View allows you to see and manage EC2 resources across all AWS regions from a single pane, making it easier to monitor and operate 
+      global deployments.
+
+
+05. What is an EC2 instance and how do instance types differ?
+    - An EC2 instance is a virtual server in the AWS cloud. Instance types differ by CPU, memory, storage, network performance, and sometimes
+      GPU capabilities, allowing you to choose the optimal configuration for your workload.
+
+
+06. How do you select the right EC2 instance type for your application?
+    - Choose based on workload requirements: compute-optimized for CPU heavy tasks, memory-optimized for large datasets, storage-optimized
+      for high IOPS, and GPU instances for ML or graphic workloads.
+
+
+07. 
+
