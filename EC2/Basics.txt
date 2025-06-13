@@ -37,5 +37,115 @@
       for high IOPS, and GPU instances for ML or graphic workloads.
 
 
-07. 
+07. What are EC2 Launch Templates and why use them?
+    - Launch Templates lets you define configuration parameters (AMI, instance type, key pair, security groups, etc). For launching instances,
+      promoting consistency and automation in deployments.
+
+
+08. What are Spot Instances and when should you use them?
+    - Spot Instances let you bid on unused EC2 capacity at reduced prices, suitable for fault-tolerant, flexible workloads. They can 
+      interrupted by AWS with 2 minute's notice. 
+
+
+09. How do Reserved Instances and Savings Plans differ?
+    - Reserved instances provide a discount for commiting to a specific Instance type and region over 1 or 3 years.
+    - Savings plans offer more felxibility, applying discounts to any usage that matches the plans parameters.
+
+
+10. What are Dedicated Hosts and Capacity Reservations?
+    - Dedicated Hosts provide physical servers dedicated to your use, useful for licensing or compliance needs.
+    - Capacity Reservations ensure that you have guaranteed instance capacity in a specific AZ.
+
+
+11. What is an AMI and how is it used?
+    - An Amazon Machine Image(AMI) is a template containing an OS and software configuration used to launch EC2 instances. You can create 
+      custom AMIs for rapid, consistent deployments
+
+
+12. What is Amazon EBS and how does it differ from instance store?
+    - Amazon EBS provides persistent block storage that survives instance stops and terminations. 
+    - Instance store is ephemeral and data is lost when the instance stops or terminates.
+
+
+13. How do you back up and restore an EC2 instance using EBS Snapshots?
+    - Take EBS snapshots for backup. To restore, create a new volume from the snapshot and attach it to the instance.
+
+
+14. What is the EBS Lifecycle Manager?
+    - It automates the creation, retention, and deletion of EBS snapshots, helping you manage backups and comply with data retention policies.
+
+
+15. What are Security Groups and how do they work?
+    - Security Groups acts as virtual firewalls, controlling inbound and outbound traffic to EC2 instances by specifying allowed protocols,
+      ports, and IP ranges.
+
+
+16. What are Elastic IPs and when should you use them?
+    - Elastic IPs are static public IP addresses for dynamic cloud computing. Use them when you need a persistent IP for your instance, 
+      even if it is stopped or replaced.
+
+
+17. What are Placement Groups?
+    - Placement Groups determines how instances are placed on underlying hardware: Cluster (low latency), Spread (high availability),
+      Partition (fault tolerance).
+
+
+18. How do Key Pairs secure EC2 instances?
+    - Key Pairs (public/private SSH Keys) are used for secure login to instances. AWS Stores the public key; you must keep the private
+      key safe.
+
+
+19. What are Network Interfaces?
+    - Elastic Network Interfaces (ENIs) are virtual network cards attached to instances, supporting multiple IPs, security groups,
+      and network configurations.
+
+
+20. What is the purpose of Load Balancers in EC2?
+    - Load Balancers distribute incomming traffic across multiple EC2 instances, improving availability and scalability. AWS Provides
+      Application, Network and Classic Load Balancers.
+
+
+21. What are Target Groups?
+    - Target Groups are used by Load Balancers to route traffic to specific sets of instances or containers, supporting health checks and routing 
+      rules.
+
+
+22. What are Trust Stores?
+    - Trust Stores manage SSL/TLS certificates and trusted CAs for secure communication in load balancing scenarios.
+
+
+23. What is Auto Scaling and how does it work with EC2?
+    - Auto Scaling automatically adjusts the number of EC2 instances in response to demand, using policies based on metrics like CPU utilization. 
+      It helps optimize cost and performance
+
+
+24. What is an Auto Scaling Group?
+    - An Auto Scaling Group is a collection of EC2 instances managed together for scaling and health checks, ensuring desired capacity and 
+      availability.
+
+
+25. How do you monitor EC2 instances?
+    - Use Amazon CloudWatch to collect and visualize metrics (CPU, memory, disk, network), set alarms, and automate actions like scaling or 
+      notifications
+
+
+26. How can you optimize EC2 costs?
+    - Use rightsizing recommendations, monitor usage, leverage Spot Instances, Savings Plans, and Reserved Instances, and automate instance 
+      lifecycle management
+
+
+27. How do you troubleshoot connectivity issues for an EC2 instance?
+    - Check security group and network ACL rules, subnet routing, instance status, and ensure the correct key pair and Elastic IP are used
+
+
+28. How do you prevent accidental termination of an EC2 instance?
+    - Enable termination protection on the instance settings
+
+
+29. How do you migrate an EC2 instance to another region?
+    - Create an AMI or snapshot, copy it to the target region, and launch a new instance from it
+
+
+30. How do you ensure high availability for EC2 workloads?
+    - Deploy instances across multiple Availability Zones, use Elastic Load Balancers, Auto Scaling Groups, and monitor with CloudWatch
 
