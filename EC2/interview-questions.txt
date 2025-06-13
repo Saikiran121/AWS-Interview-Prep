@@ -1,0 +1,126 @@
+01. Explain the difference between EC2 root device volumes backed by EBS and instance store.
+    - The root device volume contains the image used to boot the instance. If it's EBS-backed, the data persists after stopping or terminating the 
+      instance. If it's instance store-backed, the data is lost when the instance is stopped or terminated.
+
+
+02. Describe the differences between On-Demand, Reserved, and Spot Instances.
+    - On-Demand: Pay for compute by the hour/second with no long-term commitment.
+    - Reserved: Commit to a specific instance type and region for 1 or 3 years in exchange for a discount.
+    - Spot: Use spare AWS capacity at reduced prices, but instances can be interrupted by AWS
+
+
+03. What are the main categories of EC2 instance types, and what are their use cases?
+    - General Purpose: Balanced resources, suitable for most workloads.
+    - Compute Optimized: For CPU-intensive tasks.
+    - Memory Optimized: For memory-heavy applications.
+    - Storage Optimized: For high disk throughput.
+    - Accelerated Computing: For GPU or hardware accelerator needs.
+
+
+04. How can you launch an EC2 instance with a specific private IP address?
+    - By launching the instance within a Virtual Private Cloud (VPC), you can specify the private IP address
+
+
+05. What are security best practices for EC2?
+    - Use IAM roles for access management
+    - Restrict access to trusted hosts
+    - Minimize permissions
+    - Disable password-based logins
+    - Implement multi-factor authentication
+
+
+06. What is a security group, and how does it differ from a network ACL?
+    - Security groups act as virtual firewalls at the instance level, controlling inbound and outbound traffic. Network ACLs operate at the subnet 
+      level and provide stateless filtering.
+
+
+07. How would you handle CPU utilization exceeding 80% on an EC2 instance running your application?
+    - Set up an Auto Scaling Group to launch additional instances when CPU exceeds the threshold, and use an Application Load Balancer to 
+      distribute traffic among instances.
+
+
+08. How do you design a highly available EC2 architecture?
+    - Deploy instances across multiple Availability Zones
+    - Use Elastic Load Balancers
+    - Implement Auto Scaling
+    - Regularly back up data and use monitoring tools like CloudWatch
+
+
+09. What are EBS Snapshots and how do you use them?
+    - EBS Snapshots are point-in-time backups of EBS volumes. They can be used to restore data or create new volumes, ensuring data durability
+
+
+10. How do you ensure data durability and ACID compliance for a web application using EC2 and EBS?
+    - Use Amazon EFS for shared storage, deploy instances in an Auto Scaling group across multiple Availability Zones, and store critical data on 
+      EFS or EBS with regular snapshots
+
+
+11. How would you ensure multi-region redundancy for EC2 workloads?
+    - Deploy EC2 instances in multiple regions, use Route 53 for DNS routing, and replicate data using S3 Cross-Region Replication. Consider 
+      active-active or active-passive failover strategies
+
+
+12. What steps would you take if an EC2 instance is unreachable via SSH?
+    - Check security group and network ACL rules
+    - Verify the instance’s public IP and key pair
+    - Ensure the instance is running and healthy
+    - Review VPC route tables and subnet settings
+
+------------------------------------------------------------
+
+13. Explain how you would design a highly available, fault-tolerant web application using EC2.
+    - Deploy EC2 instances across multiple Availability Zones within a Region.
+    - Use Elastic Load Balancer (ELB) to distribute traffic.
+    - Place application servers in Auto Scaling Groups for automatic scaling and recovery.
+    - Store persistent data in Multi-AZ RDS or DynamoDB.
+    - Use S3 for static content and CloudFront for global content delivery.
+    - Secure each tier with appropriate security groups and VPC subnets
+
+
+14. What is a multi-tier architecture on AWS, and how do you implement it with EC2?
+    - A multi-tier (three-tier) architecture separates the application into Presentation, Logic, and Data layers.
+        a. Presentation Tier: Use ELB, CloudFront, and public subnets for web servers.
+        b. Logic Tier: Place EC2 instances or Lambda in private subnets, managed by Auto Scaling Groups.
+        c. Data Tier: Use RDS/DynamoDB/S3 in private subnets, with Multi-AZ for redundancy.
+    - Secure each tier with dedicated security groups and restrict access between tiers
+
+
+15. How would you implement a microservices architecture using EC2 and other AWS services?
+    - Deploy each microservice on separate EC2 instances, ECS, or EKS for container orchestration.
+    - Use Application Load Balancer for path-based routing.
+    - Implement service discovery with AWS Cloud Map.
+    - Secure inter-service communication with security groups and IAM.
+    - Use circuit breaker patterns to improve resilience and avoid cascading failures
+
+
+16. How do you achieve zero-downtime deployments with EC2?
+    - Use Auto Scaling Groups with multiple instances.
+    - Deploy new versions using rolling updates or blue/green deployments.
+    - Route traffic using ELB and gradually shift traffic to new instances.
+    - Monitor health checks and automate rollback if failures occur
+
+
+15. Describe how you would set up auto-scaling for unpredictable workloads.
+    - Define scaling policies based on CloudWatch metrics (CPU, memory, custom metrics).
+    - Set up step or target tracking scaling policies for rapid response.
+    - Use warm-up settings to prevent premature scaling.
+    - Combine with Spot Instances for cost optimization
+
+
+16. You need to migrate an on-premises application to AWS EC2 with minimal downtime. How do you proceed?
+    - Use AWS Application Migration Service or create AMIs from on-premises VMs.
+    - Sync data using AWS DataSync or S3.
+    - Test cutover in a staging environment.
+    - Plan a DNS switch-over during a low-traffic window.
+
+
+17. How would you secure communication between EC2 instances across different VPCs?
+    - Use VPC peering or AWS Transit Gateway.
+    - Implement security group rules to allow specific traffic.
+    - Use VPN or AWS PrivateLink for sensitive workloads.
+
+
+
+
+
+
