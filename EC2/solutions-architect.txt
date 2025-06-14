@@ -1,0 +1,199 @@
+01. A company’s CRM application runs on an Auto Scaling group of On-Demand EC2 instances. Users report slow performance at the start of 
+    the workday, but it normalizes after a few hours. What is the MOST operationally efficient solution?
+    A) Dynamic scaling based on CPU utilization
+    B) Dynamic scaling based on memory utilization
+    C) Scheduled scaling to launch new instances before the workday
+    D) Predictive scaling to adjust instance count automatically
+
+    Answer: Scheduled scaling to launch new instances before the start of the day.
+    Explanation: Scheduled scaling ensures the application has enough capacity before peak usage, addressing the performance lag at startup 
+    efficiently
+
+
+02. What method detects when to replace an EC2 instance in an Auto Scaling group?
+    A) Health check
+    B) Load balancing algorithm
+    C) EC2 health check
+    D) Dynamic path detection
+
+    Answer: Health Check
+    Explanation: Auto Scaling uses health checks (EC2 and optionally ELB) to determine if an instance is unhealthy and should be replaced.
+
+
+03. What are two characteristics of an Amazon EC2 security group? (Choose two)
+    A) Instance-level packet filtering
+    B) Deny rules only
+    C) Permit rules only
+    D) Subnet-level packet filtering
+    E) Inbound only
+
+    Answer: A) Instance-level packet filtering and C) Permit rules only
+    Explanation: Security groups act at the instance level and are stateful, with only allow (permit) rules; there are no explicit deny rules.
+
+
+04. A company requires high availability for an EC2 instance. Which approach allows automatic failover with minimal changes?
+    A) Modify the application to store data on instance store.
+    B) Attach a secondary elastic network interface (ENI) to the EC2 instance and move it to a standby instance if the primary fails.
+    C) Use EC2 Auto Scaling with health checks.
+    D) Associate an Elastic IP address with the primary instance’s network interface, and move it to a standby instance upon failure.
+
+    Answer: Associate an Elastic IP address with the primary instance’s network interface, and move it to a standby instance upon failure.
+    Explanation: Elastic IPs allow you to quickly redirect traffic to a standby EC2 instance in case of failure.
+
+
+05. What are the DHCP option attributes used to assign private DNS servers to your VPC?
+    A) DNS resolution and domain name
+    B) Hostnames and internet domain
+    C) Domain servers and domain name
+    D) Domain-name-servers and domain-name
+
+    Answer: Domain-name-servers and domain-name
+    Explanation: These DHCP options are used to configure DNS settings for instances in a VPC.
+
+
+06. What feature enables CloudWatch to manage capacity dynamically for EC2 instances?
+    A) Replication lag
+    B) Auto Scaling
+    C) Elastic Load Balancer
+    D) Vertical scaling
+
+    Answer: Auto Scaling
+    Explanation: CloudWatch metrics can trigger Auto Scaling policies to adjust EC2 capacity automatically.
+
+
+07. A company needs to back up the data on an EC2 instance. What is the recommended way to do this?
+    A) Create a snapshot of the EBS volume attached to the instance.
+    B) Copy data to instance store.
+    C) Use S3 Transfer Acceleration.
+    D) Enable CloudTrail logging.
+    
+    Answer: Create a snapshot of the EBS volume attached to the instance.
+    Explanation: EBS snapshots are the standard method for backing up EC2 instance data.
+
+
+08. A company’s voting system runs on EC2 instances in an Auto Scaling group, but the RDS database can’t keep up with the write requests. What is 
+    the most efficient solution?
+    A) Migrate the front-end application to AWS Lambda and use API Gateway.
+    B) Introduce an SQS queue between the EC2 instances and the database to buffer writes.
+    C) Increase the size of the RDS instance.
+    D) Use DynamoDB instead of RDS.
+
+    Answer:  Introduce an SQS queue between the EC2 instances and the database to buffer writes.
+    Explanation: Decoupling with SQS allows the system to handle bursts and smooth database writes, improving efficiency and scalability.
+
+
+09. What is the benefit of using Spot Instances for EC2 workloads?
+    A) Guaranteed uptime
+    B) Lower cost for fault-tolerant, flexible workloads
+    C) Reserved capacity
+    D) Persistent storage
+
+    Answer: Lower cost for fault-tolerant, flexible workloads
+    Explanation: Spot Instances offer significant cost savings for workloads that can tolerate interruptions
+
+
+10. How should you securely provide EC2 instances access to S3 buckets?
+    A) Store AWS credentials on the instance.
+    B) Use an IAM role attached to the EC2 instance.
+    C) Use access keys in application code.
+    D) Enable public access on the S3 bucket.
+
+    Answer: Use an IAM role attached to the EC2 instance.
+    Explanation: IAM roles provide secure, temporary credentials for EC2 instances to access AWS resources without hardcoding credentials.
+
+
+11. A company runs a web application on a single EC2 instance with user-uploaded documents stored on an EBS volume. For scalability, they add a 
+    second EC2 instance and EBS volume in another AZ, both behind an Application Load Balancer. Users now see only some of their documents 
+    depending on which instance serves their request. What should you do?
+    - Store the documents on Amazon S3 and update the application to use S3 for document storage, ensuring all instances access the same data.
+
+
+12. A company wants to migrate 70 TB of large video files from on-premises NFS to Amazon S3, minimizing network bandwidth usage. What’s the best 
+    solution?
+    - Use AWS Snowball to physically transfer the data to S3, reducing network bandwidth usage
+
+
+13. A company’s application ingests messages at unpredictable rates, sometimes up to 100,000 per second, and must decouple producers and consumers 
+    for scalability. What AWS service should you use?
+    - Use Amazon SQS to decouple the components and handle variable workloads
+
+
+14. A company’s application tier EC2 instances in private subnets need to download software patches from the internet but can’t be directly 
+    accessible. What should you do? (Select TWO)
+    - A) Configure a NAT gateway in a public subnet.
+      B) Associate a custom route table with a route to the NAT gateway for the private subnets.
+
+
+15. A company uses EC2 Reserved Instances for a nightly job that sometimes needs more capacity at month-end. The job cannot be interrupted. 
+    What’s the most cost-effective way to add capacity?
+    - Deploy On-Demand Instances during periods of high demand
+
+
+16. A web application in an Auto Scaling group experiences slow performance at the start of the business day. What is the most operationally 
+    efficient solution?
+    - Configure a Scheduled scaling policy to launch new instances before the start of the day
+
+
+17. How can you allow EC2 instances in private subnets to access the internet for updates, without exposing them directly?
+    - Use a NAT Gateway in a public subnet and update the route table for private subnets to route internet traffic through the NAT Gateway
+
+
+18. A company’s EC2 instances need to access an S3 bucket securely. What’s the best practice?
+    - Attach an IAM role to the EC2 instances granting permissions to access the S3 bucket.
+
+
+19. Which storage option persists data even if the EC2 instance is stopped or terminated?
+    - Amazon EBS volumes.
+
+
+20. How do you ensure high availability for a web application running on EC2?
+    - Deploy instances across multiple Availability Zones and use an Elastic Load Balancer.
+
+
+21. What is the recommended way to back up an EBS volume?
+    - Create a snapshot of the EBS volume.
+
+
+22. A company wants to minimize costs for a fault-tolerant batch processing workload. Which EC2 pricing model should they use?
+    - Spot Instances.
+
+
+23. What is the default behavior of an EC2 security group?
+    - All inbound traffic is denied; all outbound traffic is allowed.
+
+
+24. How can you quickly redirect traffic to a standby EC2 instance if the primary fails?
+    - Associate an Elastic IP address with the standby instance upon failure
+
+
+25. A company wants to automate the creation and deletion of EBS snapshots. Which service should they use?
+    - Amazon Data Lifecycle Manager.
+
+
+26. How do you restrict SSH access to EC2 instances for security?
+    - Configure security group rules to allow SSH only from trusted IP addresses.
+
+
+27. What is the benefit of using EC2 Launch Templates?
+    - They standardize and automate instance launches with pre-defined configurations.
+
+
+28. A website experiences timeouts during daily traffic bursts. The app takes 1 minute to initialize on boot. What should you do?
+    - Configure Auto Scaling step scaling policy with instance warmup to ensure new instances are ready before serving traffic
+
+
+29. A company needs to move an EC2 instance to another region. What’s the process?
+    - Create an AMI of the instance, copy the AMI to the target region, and launch a new instance from the copied AMI.
+
+
+30. How can you allow EC2 instances to resolve private DNS names within a VPC?
+    - Enable DNS hostnames and DNS resolution in the VPC settings.
+
+
+
+
+
+
+
+
+
