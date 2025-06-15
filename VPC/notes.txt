@@ -64,3 +64,148 @@
         
         5. Hybrid environments
             - In hybrid clouds, it can serve as a bridge to on-prem resources via VPN/Direct connect
+
+---------------------------------------
+
+Notes:
+
+01. Virtual Private Cloud (VPC)
+    - A VPC is a customizable, logically isolated section of the AWS cloud where you can define your own IP address range, subnets, 
+      route tables, and gateways.
+    - Supports both IPv4 and IPv6 addressing.
+
+
+02. Your VPCs
+    - Lists all VPCs in your account, their CIDR blocks, and associated resources.
+    - You can create, modify, or delete VPCs as needed.
+
+
+03. Subnets 
+    - Subnets divide your VPC’s IP address range into smaller segments, each residing in a single Availability Zone
+    - Public subnets have internet access (via Internet Gateway); private subnets do not.
+    - Subnets are used for isolation, high availability, and environment segmentation (e.g., dev, prod)
+
+
+04. Route Tables
+    - Define how traffic is routed within your VPC
+    - Main route table: default for all subnets unless explicitly associated with another.
+    - Custom route tables: user-defined for specific routing needs.
+    - Routes specify destination CIDR blocks and targets (e.g., gateways, network interfaces)
+
+
+05. Internet Gateways
+    - Enable communication between your VPC and the internet
+    - Must be attached to the VPC and referenced in the route table for internet-bound traffic
+    - No additional charge, but standard data transfer rates apply.
+
+
+06. Egress-only Internet Gateways
+    - Provide outbound-only internet access for IPv6 traffic from your VPC.
+
+
+07. DHCP Option Sets
+    - Configure domain name servers, NTP servers, and other DHCP options for instances in your VPC.
+
+
+08. Elastic IPs
+    - Static, public IPv4 addresses for dynamic cloud computing.
+
+
+09. Managed Prefix Lists
+    - Centrally manage IP address ranges for use in VPC route tables and security groups.
+
+
+10. NAT Gateways
+    - Enable instances in private subnets to access the internet, while preventing inbound internet connections.
+
+
+11. Peering Connections
+    - Connect two VPCs for private traffic routing, even across AWS accounts or regions.
+
+
+12. Network ACLs (Access Control Lists)
+    - Stateless, subnet-level firewalls controlling inbound and outbound traffic.
+
+
+13. Security Groups
+    - Stateful, instance-level firewalls controlling traffic based on rules.
+
+
+14. PrivateLink
+    - Securely connect VPCs to AWS services or third-party SaaS without traversing the public internet.
+
+
+15. Lattice
+    - Advanced service networking for managing connectivity, security, and observability across VPCs and accounts.
+
+
+16. VPC Endpoints
+    - Privately connect your VPC to supported AWS services without using an internet gateway or NAT.
+
+
+17. Endpoint Services
+    - Create your own services and share them with other VPCs using PrivateLink.
+
+
+18. Service Networks
+    - Service networks group multiple services for easier management and policy enforcement.
+
+
+19. Lattice 
+    - Lattice services provide advanced service-to-service connectivity and security.
+
+
+20. Resource Configurations and Gateways
+    - Resource Gateways: Centralize and manage access to shared resources.
+    - Target Groups: Used by load balancers to route traffic to registered targets (EC2, IPs, Lambda).
+
+
+21. DNS Firewall
+    - Protects VPC resources from malicious domains using rule groups and domain lists.
+
+
+22. Network Firewall
+    - Provides advanced, stateful, and stateless traffic filtering for VPCs.
+    - Includes firewall policies, rule groups, TLS inspection, and resource groups.
+
+
+23. VPC Endpoint Associations
+    - Manage associations between VPC endpoints and other AWS resources.
+
+
+24. Virtual Private Network (VPN)
+    a. Customer Gateways
+        - Represents your on-premises network device in AWS.
+
+    b. Virtual Private Gateways
+        - AWS side of a VPN connection.
+
+    c. Site-to-Site VPN Connections
+        - Secure, encrypted connections between your VPC and on-premises networks.
+
+    d. Client VPN Endpoints
+        - Allow remote users to securely access resources in your VPC.
+
+
+25. AWS Verified Access
+    - Provides secure, identity-based access to applications without VPNs.
+    - Includes instances, trust providers, groups, and endpoints for granular access control.
+
+
+26. Transit Gateways
+    - Central hub for connecting multiple VPCs, VPNs, and AWS Direct Connect links.
+    - Includes attachments, policy tables, route tables, and multicast support.
+
+
+27. Traffic Mirroring
+    - Copy network traffic from ENIs to security/monitoring appliances for deep packet inspection.
+
+
+28. Network Manager and Cloud WAN
+    - Network Manager: Centralized management and monitoring of global AWS and on-premises networks.
+    - Cloud WAN: Simplifies global network connectivity and management.
+
+
+29. VPC IP Address Manager
+    - Provides visibility and management of IP address allocations within your VPCs.
+
