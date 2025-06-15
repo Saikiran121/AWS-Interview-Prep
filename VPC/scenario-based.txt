@@ -1,0 +1,128 @@
+01. Scenario: You launched EC2 instances in the same VPC but they cannot communicate with each other using private IPs. What could be the issue?
+    Answer: By default, instances in the same VPC can communicate via private IPs. If communication fails, check Security Groups and Network ACLs 
+    to ensure they allow inbound/outbound traffic on required ports.
+
+
+02. Scenario: You want to design a highly available 2-tier web application in AWS. How would you architect the VPC?
+    Answer: Create public subnets with Internet Gateway for load balancers and private subnets for application servers across multiple Availability 
+    Zones. Use Auto Scaling groups and route tables accordingly.
+
+
+03. Scenario: You need to restrict outbound internet access for one subnet but allow it for another in the same VPC. How?
+    Answer: Modify the route table of the restricted subnet to remove the default route to the Internet Gateway, while keeping it for the other 
+    subnet.
+
+
+04. Scenario: You want to isolate sensitive workloads within your VPC. How do you create an isolated subnet?
+    Answer: Create a subnet without a route to an Internet Gateway or NAT Gateway, ensuring no inbound or outbound internet access.
+
+
+05. Scenario: Your application needs to access S3 securely without using the internet. How do you achieve this?
+    Answer: Create a Gateway VPC Endpoint for S3, allowing private communication between your VPC and S3.
+
+
+06. Scenario: How would you differentiate between Security Groups and Network ACLs in securing your VPC?
+    Answer: Use Security Groups for instance-level stateful filtering and Network ACLs for subnet-level stateless filtering, providing layered 
+    security.
+
+
+07. Scenario: Your EC2 instances in a public subnet are not reachable from the internet. What could be wrong?
+    Answer: Check if the subnet’s route table has a route to the Internet Gateway, if the instances have public IPs, and if Security Groups allow 
+    inbound traffic.
+
+
+08. Scenario: You want to assign a static public IP to an EC2 instance. How?
+    Answer: Allocate and associate an Elastic IP address to the instance.
+
+
+09. Scenario: How do you enable DNS resolution for instances in your VPC?
+    Answer: Enable DNS resolution and DNS hostnames in the VPC settings.
+
+
+10. Scenario: You want to monitor network traffic in your VPC. What AWS service do you use?
+    Answer: Enable VPC Flow Logs to capture metadata about IP traffic.
+
+
+11. Scenario: You have multiple VPCs and want them to communicate privately. What options do you have?
+    Answer: Use VPC Peering or Transit Gateway to enable private communication between VPCs.
+
+
+12. Scenario: You want to connect your on-premises data center to AWS VPC securely. What are your options?
+    Answer: Use AWS Site-to-Site VPN or AWS Direct Connect.
+
+
+13. Scenario: How do you implement high availability for NAT gateways?
+    Answer: Deploy NAT Gateways in multiple Availability Zones and update route tables accordingly.
+
+
+14. Scenario: You need to allow instances in private subnets to access AWS services without internet access. How?
+    Answer: Use Interface VPC Endpoints (AWS PrivateLink) for private connectivity to AWS services.
+
+
+15. Scenario: Your VPC has overlapping CIDR blocks with another VPC you want to peer with. What can you do?
+    Answer: VPC Peering does not support overlapping CIDR blocks; consider redesigning CIDRs or using Transit Gateway with route translation.
+
+
+16. Scenario: How do you restrict access to a VPC Endpoint?
+    Answer: Attach an endpoint policy specifying allowed principals and actions.
+
+
+17. Scenario: You want to log and analyze all inbound and outbound traffic to your VPC. How?
+    Answer: Use VPC Flow Logs and send them to CloudWatch Logs or S3 for analysis.
+
+
+18. Scenario: How do you troubleshoot EC2 instances in a private subnet that cannot access the internet?
+    Answer: Verify NAT Gateway presence, route table entries for private subnet, and Security Group rules.
+
+
+19. Scenario: How can you securely expose a service running in your VPC to other VPCs or accounts?
+    Answer: Use AWS PrivateLink with VPC Endpoint Services.
+
+
+20. Scenario: You want to automate VPC creation and resource provisioning. What tools do you use?
+    Answer: Use AWS CloudFormation, Terraform, or AWS CDK for Infrastructure as Code (IaC).
+
+
+21. Scenario: You want to design a multi-region VPC architecture with secure and scalable connectivity. How?
+    Answer: Use inter-region VPC Peering or Transit Gateway with inter-region peering enabled, combined with encrypted VPN or Direct Connect.
+
+
+22. Scenario: How do you implement centralized security controls across multiple VPCs and accounts?
+    Answer: Use AWS Firewall Manager to centrally manage security groups, Network Firewall, and WAF policies.
+
+
+23. Scenario: You want to perform deep packet inspection on VPC traffic. How?
+    Answer: Use Traffic Mirroring to send traffic to monitoring appliances.
+
+
+24. Scenario: How do you handle IP address management at scale across multiple VPCs?
+    Answer: Use AWS VPC IP Address Manager (IPAM) to plan, track, and audit IP allocations.
+
+
+25. Scenario: Your application requires encrypted traffic inspection within the VPC. How do you achieve this?
+    Answer: Use AWS Network Firewall with TLS inspection configurations.
+
+
+26. Scenario: You want to provide zero-trust access to applications hosted in your VPC without using VPNs. What service do you use?
+    Answer: Use AWS Verified Access to enable identity-based access.
+
+
+27. Scenario: How do you ensure compliance requirements like PCI-DSS or HIPAA in your VPC design?
+    Answer: Implement strict Security Groups and NACLs, enable logging (Flow Logs, CloudTrail), encrypt data at rest and in transit, and use AWS 
+    Config for compliance auditing.
+
+
+28. Scenario: You want to connect multiple on-premises sites to a single VPC. How?
+    Answer: Use AWS VPN CloudHub to connect multiple VPN tunnels from different sites.
+
+
+29. Scenario: How do you secure microservices communication across multiple VPCs?
+    Answer: Use VPC Peering or Transit Gateway combined with PrivateLink and fine-grained Security Group rules.
+
+
+30. Scenario: You need to migrate workloads from EC2-Classic to VPC. What considerations do you have?
+    Answer: Plan IP addressing, security groups, and routing; use ClassicLink to connect EC2-Classic instances to VPC during migration; ensure 
+    compatibility of applications.
+
+
+

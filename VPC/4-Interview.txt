@@ -1,0 +1,137 @@
+01. What is VPC sharing and how does it work?
+    Answer: VPC sharing allows multiple AWS accounts to create resources in a centrally managed VPC. The owner account shares subnets with 
+    participant accounts, enabling resource sharing without duplicating VPCs.
+
+
+02. How do you implement cross-account access to VPC resources?
+    Answer: Use VPC sharing, VPC peering, or AWS PrivateLink with appropriate IAM policies and security groups to enable secure cross-account 
+    resource access.
+
+
+03. What is the difference between AWS PrivateLink and VPC Peering?
+    Answer: PrivateLink provides private connectivity to services via interface endpoints without exposing traffic to the internet or requiring 
+    route table changes, while VPC Peering connects entire VPCs allowing full network-level communication.
+
+
+04. Explain how VPC endpoints improve security and performance.
+    Answer: VPC endpoints enable private connections to AWS services without traversing the internet, reducing exposure to threats and improving 
+    latency by keeping traffic within the AWS network.
+
+
+05. How can you restrict access to a VPC Endpoint?
+    Answer: By attaching an endpoint policy that specifies which principals and actions are allowed or denied when accessing the endpoint.
+
+
+06. What is the role of Transit Gateway route tables?
+    Answer: Transit Gateway route tables control how traffic is routed between attached VPCs, VPNs, and Direct Connect gateways, enabling 
+    segmentation and fine-grained control of network flows.
+
+
+07. How do you handle overlapping CIDR blocks in multi-VPC architectures?
+    Answer: Use Transit Gateway with route translation, or redesign CIDR allocations to avoid overlap, as VPC peering does not support overlapping 
+    CIDRs.
+
+
+08. What are the best practices for IP addressing in large-scale VPC deployments?
+    Answer: Use hierarchical CIDR allocation, avoid overlapping ranges, leverage AWS IP Address Manager (IPAM), and plan subnets considering future 
+    growth and multi-region needs.
+
+
+09. How does AWS Network Firewall integrate with VPC?
+    Answer: Network Firewall is deployed within VPCs to provide stateful and stateless traffic filtering, intrusion prevention, and TLS inspection, 
+    protecting workloads from network threats.
+
+
+10. What is the difference between stateful and stateless rules in AWS Network Firewall?
+    Answer: Stateful rules track connection state and allow return traffic automatically; stateless rules evaluate packets individually without 
+    maintaining session state.
+
+
+11. How do you enable TLS inspection in AWS Network Firewall?
+    Answer: By configuring TLS inspection rules and providing certificates for decrypting and inspecting encrypted traffic passing through the 
+    firewall.
+
+
+12. What is the function of AWS Firewall Manager in managing VPC security?
+    Answer: Firewall Manager centrally manages firewall rules, security groups, and AWS WAF policies across multiple accounts and resources for 
+    consistent security posture.
+
+
+13. How do you architect a highly available NAT solution in AWS?
+    Answer: Deploy NAT Gateways in multiple AZs and update route tables to route private subnet traffic to the NAT Gateway in the same AZ for fault 
+    tolerance.
+
+
+14. What are the limitations of NAT Gateways?
+    Answer: NAT Gateways only support IPv4, have hourly charges, and cannot be assigned to a specific instance or have custom firewall rules.
+
+
+15. How do you use VPC Flow Logs for security auditing?
+    Answer: Capture and analyze network traffic metadata to detect unusual patterns, unauthorized access attempts, or data exfiltration.
+
+
+16. What is the difference between ClassicLink and VPC?
+    Answer: ClassicLink connects EC2-Classic instances to a VPC, allowing them to communicate using private IPs; VPC is the modern isolated virtual 
+    network environment.
+
+
+17. How do you configure multi-region VPC connectivity?
+    Answer: Use inter-region VPC Peering or Transit Gateway with inter-region peering enabled to connect VPCs across AWS regions.
+
+
+18. Explain the concept of VPC traffic mirroring and its use cases.
+    Answer: Traffic Mirroring copies network traffic from ENIs to monitoring appliances for deep packet inspection, troubleshooting, and security 
+    analysis.
+
+
+19. How do you secure data in transit within a VPC?
+    Answer: Use encryption protocols like TLS, IPsec VPNs, and AWS PrivateLink to ensure data is encrypted while moving between resources.
+
+
+20. What are the implications of enabling DNS hostnames and DNS resolution in a VPC?
+    Answer: Enables instances to resolve AWS service endpoints and internal hostnames, essential for service discovery and communication.
+
+
+21. How do you troubleshoot “Instance unreachable” issues in a VPC?
+    Answer: Verify subnet route tables, security groups, network ACLs, instance status, and ensure the correct IP addressing and internet gateway 
+    attachment.
+
+
+22. What is the use of Elastic Fabric Adapter (EFA) in a VPC?
+    Answer: EFA provides low-latency, high-throughput networking for HPC and machine learning workloads within a VPC.
+
+
+23. How do you implement service mesh architectures within VPCs?
+    Answer: Use AWS App Mesh or third-party service meshes with PrivateLink and VPC peering to enable secure, observable service-to-service 
+    communication.
+
+
+24. What is the role of AWS Global Accelerator with VPCs?
+    Answer: It provides static IP addresses and optimizes routing to improve availability and performance of applications deployed in multiple 
+    VPCs or regions.
+
+
+25. How do you manage VPC quotas and request increases?
+    Answer: Monitor limits via AWS Service Quotas and request limit increases through AWS Support when needed.
+
+
+26. Explain how you would migrate an on-premises network to AWS VPC.
+    Answer: Plan IP addressing, establish VPN or Direct Connect, replicate network segmentation using subnets and security groups, and migrate 
+    workloads incrementally.
+
+
+27. How do you secure inter-VPC communication?
+    Answer: Use Transit Gateway with security policies, VPC Peering with strict security groups, or PrivateLink for service-specific access.
+
+
+28. What is the significance of the “Source/Destination Check” attribute on an EC2 instance?
+    Answer: Disabling it is necessary for instances acting as NAT or routers to forward traffic not destined for themselves.
+
+
+29. How do you implement centralized logging for multiple VPCs?
+    Answer: Use VPC Flow Logs aggregated into a central S3 bucket or CloudWatch Logs group, possibly via AWS Organizations and Firewall Manager.
+
+
+30. What are the security considerations when enabling IPv6 in a VPC?
+    Answer: Ensure security groups and NACLs are configured for IPv6, monitor IPv6 traffic with flow logs, and understand that IPv6 traffic 
+    bypasses NAT.

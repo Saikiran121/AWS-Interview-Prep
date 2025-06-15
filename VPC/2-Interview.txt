@@ -1,0 +1,121 @@
+01. What is an AWS VPC?
+    - A Virtual Private Cloud (VPC) is a logically isolated virtual network within the AWS cloud where you can launch AWS resources in a secure 
+      and customizable environment.
+
+
+02. What are the main components of a VPC?
+    - Components include subnets, route tables, internet gateways, NAT gateways, security groups, network ACLs, and VPC endpoints.
+
+
+03. What is the difference between a public and private subnet?
+    - Public subnets have a route to an Internet Gateway allowing internet access, whereas private subnets do not have direct internet access and 
+      usually route outbound traffic via a NAT gateway.
+
+
+04. What is an Internet Gateway?
+    - It is a horizontally scaled, redundant AWS component attached to a VPC to enable communication between the VPC and the internet.
+
+
+05. What is a NAT Gateway and why is it used?
+    - NAT Gateway allows instances in private subnets to access the internet for updates or patches without exposing them to inbound internet traffic.
+
+
+06. What are Security Groups?  
+    - Security Groups act as virtual firewalls at the instance level, controlling inbound and outbound traffic and are stateful.
+
+
+07. What are Network ACLs?
+    - Network ACLs are stateless firewalls that control traffic at the subnet level, providing an additional layer of security.
+
+
+08. How many VPCs can you create per AWS region by default?
+    - By default, you can create up to 5 VPCs per AWS region (can be increased via support).
+
+
+09. What is a VPC Endpoint?
+    - A VPC Endpoint enables private connections between your VPC and supported AWS services without using the internet.
+
+
+10. What is VPC Peering?
+    - VPC Peering connects two VPCs privately, allowing instances in either VPC to communicate using private IPs.
+
+
+11. Can VPC Peering be established between VPCs in different regions?
+    - Yes, AWS supports inter-region VPC peering.
+
+
+12. What is a Route Table?
+    - A Route Table contains rules that determine how traffic is directed within a VPC or to external networks.
+
+
+13. What is the difference between stateful and stateless firewalls in AWS?
+    - Security Groups are stateful (return traffic is automatically allowed), while Network ACLs are stateless (return traffic must be explicitly 
+      allowed).
+
+
+14. What is an Elastic IP?
+    - A static, public IPv4 address that can be associated with an instance or a NAT gateway.
+
+
+15. What is the difference between a NAT Gateway and a NAT Instance?
+    - NAT Gateway is a managed AWS service that is highly available and scalable; NAT Instance is a manually configured EC2 instance acting as a NAT.
+
+
+16. How do you secure communication between VPCs?
+    - Using VPC Peering, Transit Gateway, or VPN connections with proper routing and security groups.
+
+
+17. What is a Transit Gateway?
+    - A scalable hub that connects multiple VPCs, VPNs, and on-premises networks for simplified network management.
+
+
+18. What is a Default VPC?
+    - A pre-configured VPC created automatically in each AWS region with public subnets and default settings for easy resource launch.
+
+
+19. How do you monitor VPC traffic?
+    - Using VPC Flow Logs, which capture information about IP traffic going to and from network interfaces.
+
+
+20. What is the maximum number of subnets per VPC?
+    - Up to 200 subnets per VPC by default.
+
+
+21. What is a DHCP Option Set in VPC?
+    - It defines DHCP options like domain name servers, domain names, and NTP servers for instances in the VPC.
+
+
+22. How do you connect your on-premises network to a VPC?
+    - Using AWS Site-to-Site VPN or AWS Direct Connect.
+
+
+23. What is the purpose of a Customer Gateway?
+    - It represents your on-premises gateway device for establishing a VPN connection with AWS.
+
+
+24. Explain the concept of Elastic Network Interface (ENI).
+    - ENI is a virtual network interface that can be attached to an EC2 instance for network connectivity.
+
+
+25. What happens if you stop and start an EC2 instance in a VPC with a public IP?
+    - The public IP is released unless an Elastic IP is associated; the private IP remains the same.
+
+
+26. What is the difference between a public IP and an Elastic IP?
+    - Public IPs are dynamic and change on stop/start, Elastic IPs are static and persist until released.
+
+
+27. How do you enable DNS resolution in a VPC?
+    - By enabling DNS resolution and DNS hostnames in the VPC settings.
+
+
+28. What is the use of Managed Prefix Lists?
+    - They allow you to centrally manage a list of CIDR blocks for use in security groups and route tables.
+
+
+29. What is AWS Verified Access?
+    - A service that provides secure, identity-based access to applications without using VPNs.
+
+
+30. How do you troubleshoot connectivity issues in a VPC?
+    - Check route tables, security groups, network ACLs, subnet configurations, and VPC Flow Logs for traffic analysis.

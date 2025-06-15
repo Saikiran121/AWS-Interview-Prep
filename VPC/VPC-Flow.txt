@@ -1,0 +1,26 @@
+Flow of Network Traffic in a Typical VPC Setup
+
+01. Launching an EC2 instance in a subnet:
+    - The instance gets a private IP from the subnet’s IP range.
+
+
+02. If the instance is in a public subnet:
+    - It can have a public IP or Elastic IP.
+    - Traffic destined for the internet is routed via the Internet Gateway (IGW).
+    - Incoming internet traffic reaches the instance through the IGW.
+
+
+03. If the instance is in a private subnet:
+    - It has only a private IP.
+    - To access the internet (for software updates, etc.), it sends traffic to the NAT Gateway in the public subnet.
+    - The NAT Gateway forwards this traffic to the IGW and returns the response back to the instance.
+
+
+04. Internal communication:
+    - Instances within the same VPC or peered VPCs communicate directly using private IPs, routed by the route tables.
+
+
+Visual Summary
+[Internet] <---> [Internet Gateway] <---> [Public Subnet] <---> [EC2 Instance with Public IP]
+                                   |
+                                   +--> [NAT Gateway] <--- [Private Subnet] <---> [EC2 Instance with Private IP]

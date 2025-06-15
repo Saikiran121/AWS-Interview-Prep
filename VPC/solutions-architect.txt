@@ -1,0 +1,131 @@
+01. What is Amazon VPC and why is it used?
+    Answer: Amazon VPC (Virtual Private Cloud) lets you provision a logically isolated section of AWS where you can launch AWS resources in a 
+    virtual network that you define, providing control over IP addressing, subnets, route tables, and security settings.
+
+
+02. How do you design a fault-tolerant architecture using VPC?
+    Answer: Use multiple Availability Zones with subnets in each AZ, deploy resources across these subnets, use Elastic Load Balancers for 
+    distributing traffic, enable Auto Scaling, and configure route tables and gateways for redundancy.
+
+
+03. What are subnets in a VPC?
+    Answer: Subnets are subdivisions of a VPC’s IP address range, each residing in a single Availability Zone, used to group resources and control 
+    traffic flow.
+
+
+04. Explain the difference between public and private subnets.
+    Answer: Public subnets have a route to an Internet Gateway allowing inbound/outbound internet traffic; private subnets do not have direct 
+    internet access and route outbound traffic through NAT gateways.
+
+
+05. What is a NAT Gateway and when would you use it?
+    Answer: NAT Gateway enables instances in private subnets to access the internet for updates or patches without exposing them to inbound 
+    internet traffic.
+
+
+06. How do Security Groups differ from Network ACLs?
+    Answer: Security Groups are stateful firewalls at the instance level, automatically allowing return traffic; Network ACLs are stateless, 
+    subnet-level firewalls requiring explicit inbound and outbound rules.
+
+
+07. What is a VPC Endpoint?
+    Answer: A VPC Endpoint allows private connections between your VPC and supported AWS services without using an Internet Gateway, improving 
+    security and reducing latency.
+
+
+08. What are the types of VPC Endpoints?
+    Answer: Interface Endpoints (powered by AWS PrivateLink) and Gateway Endpoints (for S3 and DynamoDB).
+
+
+09. How does VPC Peering work?
+    Answer: VPC Peering connects two VPCs privately, enabling instances in either VPC to communicate using private IP addresses without traversing 
+    the internet.
+
+
+10. Can VPC Peering be established between VPCs in different AWS accounts?
+    Answer: Yes, VPC Peering supports connections across different AWS accounts and regions.
+
+
+11. What is a Transit Gateway and how does it differ from VPC Peering?
+    Answer: Transit Gateway acts as a central hub connecting multiple VPCs, VPNs, and on-premises networks, simplifying management and scaling, 
+    whereas VPC Peering is a one-to-one connection.
+
+
+12. How do you monitor network traffic in a VPC?
+    Answer: By enabling VPC Flow Logs, which capture metadata about IP traffic going to and from network interfaces.
+
+
+13. What is the difference between stopping and terminating an EC2 instance in a VPC?
+    Answer: Stopping an instance shuts it down but preserves its EBS volumes and private IP; terminating deletes the instance and associated EBS 
+    volumes (unless configured otherwise).
+
+
+14. What is an Elastic IP and when would you use it?
+    Answer: An Elastic IP is a static public IPv4 address that can be associated with an instance or NAT Gateway to maintain a persistent public IP.
+
+
+15. How do you secure communication between VPCs?
+    Answer: Use VPC Peering, Transit Gateway, or AWS PrivateLink with proper routing and security group configurations.
+
+
+16. What is the purpose of DHCP Option Sets in a VPC?
+    Answer: DHCP Option Sets define network parameters like domain name servers and domain names for instances launched in the VPC.
+
+
+17. How do you connect your on-premises data center to a VPC?
+    Answer: Using AWS Site-to-Site VPN or AWS Direct Connect for private, secure connectivity.
+
+
+18. What is the maximum number of subnets per VPC?
+    Answer: By default, up to 200 subnets per VPC.
+
+
+19. How do you implement high availability for NAT Gateways?
+    Answer: Deploy NAT Gateways in multiple AZs and configure route tables to use the NAT Gateway in the corresponding AZ.
+
+
+20. How do you handle overlapping CIDR blocks in multi-VPC architectures?
+    Answer: Avoid overlapping CIDRs or use Transit Gateway with route translation; VPC Peering does not support overlapping CIDRs.
+
+
+21. What are Managed Prefix Lists?
+    Answer: Managed Prefix Lists are centrally managed sets of CIDR blocks that can be referenced in security groups and route tables for 
+    simplified management.
+
+
+22. How do you enable DNS resolution in a VPC?
+    Answer: Enable both DNS resolution and DNS hostnames in the VPC settings.
+
+
+23. What is the use of Elastic Network Interfaces (ENIs)?
+    Answer: ENIs are virtual network cards that can be attached to instances, allowing multiple IP addresses and flexible networking.
+
+
+24. How do you troubleshoot connectivity issues in a VPC?
+    Answer: Check route tables, security groups, network ACLs, subnet configurations, and verify Internet Gateway or NAT Gateway attachments.
+
+
+25. What is AWS Verified Access?
+    Answer: A service that provides secure, identity-based access to applications without the need for VPNs.
+
+
+26. How do you implement disaster recovery in VPC architectures?
+    Answer: Use multi-region deployments, data replication, automated backups, and failover mechanisms like Route 53 health checks and Auto Scaling.
+
+
+27. What is Traffic Mirroring and its use case?
+    Answer: Traffic Mirroring copies network traffic from ENIs to monitoring or security appliances for deep packet inspection and troubleshooting.
+
+
+28. How does AWS Network Firewall integrate with VPCs?
+    Answer: It provides stateful and stateless traffic filtering at VPC level for enhanced security and compliance.
+
+
+29. What are the benefits of using Infrastructure as Code (IaC) with VPCs?
+    Answer: IaC enables repeatable, version-controlled, and automated deployment of VPC resources, reducing errors and improving scalability.
+
+
+30. How do you optimize VPC costs?
+    Answer: Use appropriate instance types, leverage Auto Scaling, minimize idle resources, use NAT Gateways efficiently, and monitor usage with 
+    AWS Cost Explorer.
+

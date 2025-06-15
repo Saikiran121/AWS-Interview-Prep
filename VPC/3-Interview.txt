@@ -1,0 +1,129 @@
+01. What is the difference between a NAT Gateway and a NAT Instance?
+    Answer: NAT Gateway is a fully managed, highly available AWS service requiring no maintenance, supports bursts of bandwidth, and scales 
+    automatically. NAT Instance is an EC2 instance configured to perform NAT, requires manual management, and can become a bottleneck or single 
+    point of failure.
+
+
+02. How does a Transit Gateway improve VPC connectivity?
+    Answer: Transit Gateway acts as a central hub to connect multiple VPCs, VPNs, and on-premises networks, simplifying management and scaling by 
+    reducing the number of peering connections.
+
+
+03. Can you explain the difference between VPC Peering and Transit Gateway?
+    Answer: VPC Peering is a one-to-one connection between two VPCs, while Transit Gateway supports many-to-many connections, enabling scalable 
+    and centralized network architecture.
+
+
+04. How do you troubleshoot connectivity issues between two peered VPCs?
+    Answer: Check route tables in both VPCs to ensure routes to the peer CIDR are present, verify security groups and NACLs allow traffic, and 
+    confirm peering connection status is active.
+
+
+05. What are the limits on VPC peering connections per VPC?
+    Answer: By default, you can have up to 125 active VPC peering connections per VPC.
+
+
+06. How do you enable DNS resolution across peered VPCs?
+    Answer: Enable the “Enable DNS resolution from peer VPC” option in the VPC peering connection settings.
+
+
+07. What is the purpose of a VPC Endpoint Service (AWS PrivateLink)?
+    Answer: It allows you to expose your service privately to other VPCs without using public IPs or traversing the internet.
+
+
+08. What are the types of VPC endpoints?
+    Answer: Interface Endpoints (powered by PrivateLink) and Gateway Endpoints (for S3 and DynamoDB).
+
+
+09. How does an Elastic Network Interface (ENI) function in a VPC?
+    Answer: ENI is a virtual network card that can be attached to an EC2 instance, providing multiple IP addresses, security groups, and MAC 
+    addresses for flexible networking.
+
+
+10. What is the difference between Security Groups and Network ACLs in terms of statefulness?
+    Answer: Security Groups are stateful (return traffic is automatically allowed), while Network ACLs are stateless (return traffic must be 
+    explicitly allowed).
+
+
+11. How do you implement high availability for NAT Gateways?
+    Answer: Deploy NAT Gateways in multiple Availability Zones and configure route tables accordingly.
+
+
+12. What is the maximum number of IP addresses you can assign to a single ENI?
+    Answer: Up to 50 IP addresses per ENI (varies by instance type).
+
+
+13. Explain the concept of VPC Flow Logs and their use cases.
+    Answer: VPC Flow Logs capture network traffic metadata for monitoring, troubleshooting, and security analysis.
+
+
+14. How do you restrict access to a VPC Endpoint?
+    Answer: Use endpoint policies to control which principals and actions are allowed through the endpoint.
+
+
+15. What is the function of DHCP Option Sets in a VPC?
+    Answer: They define DHCP parameters such as domain name servers and domain names for instances launched in the VPC.
+
+
+16. How do you connect multiple on-premises sites to a single VPC?
+    Answer: Use AWS VPN CloudHub to connect multiple VPN tunnels from different sites to the VPC.
+
+
+17. What is AWS Verified Access and how does it relate to VPC security?
+    Answer: Verified Access enables secure, identity-based access to applications without VPNs, integrating with VPC resources for granular access 
+    control.
+
+
+18. How does Traffic Mirroring work in a VPC?
+    Answer: It copies network traffic from Elastic Network Interfaces to monitoring or security appliances for deep packet inspection.
+
+
+19. What are Managed Prefix Lists and how are they used?
+    Answer: Managed Prefix Lists centrally manage sets of CIDR blocks that can be referenced in security groups and route tables for simplified 
+    management.
+
+
+20. Can you explain the difference between a Virtual Private Gateway and a Customer Gateway?
+    Answer: Virtual Private Gateway is the AWS side of a VPN connection; Customer Gateway represents the on-premises VPN device.
+
+
+21. How do you enable IPv6 in a VPC?
+    Answer: Assign an IPv6 CIDR block to the VPC and configure subnets and route tables to support IPv6 traffic.
+
+
+22. What are the best practices for designing a multi-AZ VPC?
+    Answer: Distribute subnets across AZs, deploy NAT Gateways in each AZ, and configure route tables for fault tolerance.
+
+
+23. How does AWS Cloud WAN integrate with VPC networking?
+    Answer: Cloud WAN provides centralized management and automation of global network connectivity, including VPCs, across regions and accounts.
+
+
+24. What is the difference between a Gateway Load Balancer and a Network Load Balancer in a VPC?
+    Answer: Gateway Load Balancer is used for deploying, scaling, and managing virtual appliances; Network Load Balancer handles TCP/UDP traffic 
+    at high scale.
+
+
+25. How do you configure VPC Peering with overlapping CIDR blocks?
+    Answer: It’s not supported; you must avoid overlapping CIDRs or use Transit Gateway with route translation.
+
+
+26. What is the role of Route Tables in Transit Gateway attachments?
+    Answer: They control how traffic is routed between attachments (VPCs, VPNs) connected to the Transit Gateway.
+
+
+27. How do you secure traffic between microservices in different VPCs?
+    Answer: Use VPC Peering or Transit Gateway combined with Security Groups and PrivateLink for secure, private connectivity.
+
+
+28. What is the maximum number of VPCs you can attach to a Transit Gateway?
+    Answer: Up to 5,000 attachments per Transit Gateway.
+
+
+29. How do you enable logging for Network Firewall in a VPC?
+    Answer: Configure firewall logging to send logs to CloudWatch Logs or S3 buckets.
+
+
+30. How do you perform IP address management in large VPC deployments?
+    Answer: Use VPC IP Address Manager (IPAM) to centrally plan, track, and monitor IP address usage across VPCs and accounts.
+

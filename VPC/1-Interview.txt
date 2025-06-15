@@ -1,0 +1,122 @@
+01. What is a VPC?
+    - A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch resources (e.g., EC2 instances) in a 
+      virtual network. It provides control over IP addressing, subnets, routing, and security
+
+
+02. What is the difference between a public and private subnet?
+    - Public subnet: Has a route to the internet via an Internet Gateway.
+    - Private subnet: No direct internet access; uses NAT Gateway/Instance for outbound traffic
+
+
+03. What is a CIDR block?
+    - A CIDR (Classless Inter-Domain Routing) block defines the IP address range for a VPC or subnet (e.g., 10.0.0.0/16)
+
+
+04. What is an Internet Gateway?
+    - A horizontally scaled, redundant component that allows communication between resources in a VPC and the internet
+
+
+05. What is a NAT Gateway?
+    - A Network Address Translation (NAT) service that enables instances in private subnets to connect to the internet while blocking inbound traffic
+
+
+06. Explain Security Groups and NACLs.
+    - Security Groups: Stateful, act as virtual firewalls at the instance level.
+    - NACLs (Network ACLs): Stateless, operate at the subnet level
+
+
+07. What is a Route Table?
+    - A set of rules (routes) that determine where network traffic is directed within a VPC
+
+
+08. How many IPs does a /24 CIDR block provide?
+    - 2^(32-24) = =256 IP addresses (254 usable, as AWS reserves 5)
+
+
+09. What is the purpose of an Elastic IP?
+    - A static, public IPv4 address that you can allocate to AWS resources (e.g., EC2 instances)
+
+
+10. Can a VPC have IPv6 addresses?
+    - Yes. AWS supports dual-stack (IPv4 and IPv6) VPCs
+
+
+11. What is VPC Peering?
+    - A connection between two VPCs that enables private communication using private IP addresses
+
+
+12. How does a Site-to-Site VPN work?
+    - It establishes a secure connection between an on-premises network and a VPC using IPsec tunnels
+
+
+13. What is AWS Direct Connect?
+    - A dedicated network connection from your data center to AWS, bypassing the public internet
+
+
+14. What is a Transit Gateway?
+    - A hub that connects multiple VPCs, VPNs, and on-premises networks, simplifying network management
+
+
+15. How do Security Groups differ from NACLs?
+    - Security Groups are stateful (allow return traffic automatically), while NACLs are stateless (require explicit inbound/outbound rules)
+
+
+16. What are VPC Flow Logs?
+    - Logs capturing metadata about IP traffic flowing through network interfaces in a VPC for monitoring and troubleshooting
+
+
+17. How do you restrict SSH access to an EC2 instance?
+    - Configure the Security Group to allow SSH (port 22) only from specific IP ranges
+
+
+18. What is a VPC Endpoint?
+    - A private connection to AWS services (e.g., S3) without using an Internet Gateway
+
+
+19. Explain VPC Lattice.
+    - A service for automating network connectivity, security, and observability across VPCs and accounts
+
+
+20. What is AWS Verified Access?
+    - A service providing secure, identity-based access to applications without VPNs
+
+
+21. An EC2 instance in a public subnet can’t access the internet. Why?
+    - Missing route to the Internet Gateway in the route table.
+    - Security Group blocking outbound traffic
+
+
+22. How would you connect two VPCs in different regions?
+    - Use VPC Peering or Transit Gateway
+
+
+23. How do you achieve high availability in a VPC?
+    - Deploy resources across multiple Availability Zones and use load balancers
+
+
+24. Why use multiple subnets in a VPC?
+    - For fault tolerance (spread across AZs) and isolation (e.g., separating dev/prod)
+
+
+25. What is the smallest CIDR block allowed for a VPC?
+    - /28 (16 IPs)
+
+
+26. A VPC isn’t resolving DNS. How to fix it?
+    - Enable DNS hostnames and DNS resolution in the VPC settings
+
+
+27. How to monitor VPC traffic?
+    - Use VPC Flow Logs and Amazon CloudWatch
+
+
+28. What is a default VPC?
+    - A pre-configured VPC in every AWS region, with public subnets and an Internet Gateway
+
+
+29. Can you modify a VPC’s CIDR block after creation?
+    - No. You must create a new VPC with the desired CIDR
+
+
+30. How many VPCs can you create per AWS account?
+    - Soft limit of 5 VPCs per region (can be increased via support)
