@@ -1,0 +1,75 @@
+01. What is CIDR notation?
+    - CIDR notation combines an IP addresses and a sufix (e.g: /24) that indicates how many bits are fixed for the network portion
+    - Example: 192.168.1.0/24
+        a. 192.168.1.0 is the base IP address 
+        b. /24 means the first 24 bits are the network part; the remaining 8 bits are for hosts.
+
+
+02. How to calculate the Number of IP Addresses in a CIDR Block 
+    - Number of IPs = 2^(32−prefix length)
+    - The Prefix length is the number after the slash (/)
+
+    Examples:
+        a. /24: 2^32-24 = 2^8 = 256 IP addresses
+        b. /16: 2^32-16 = 2^16 = 65,536 IP addresses
+        c. /20: 2^32-20 = 2^12 = 4096 IP addresses
+    
+    TIP: The smaller the prefix (Eg: /8), the larger the address range. The larger the prefix (eg: /28), the smaller the range.
+
+
+03. How to find the IP Range for a CIDR Block  
+
+    a. Identify the Network Address:
+        - This is the starting IP in the range (eg: 10.0.0.0 in 10.0.0.0/16 ).
+    
+    b. calculate total IPs 
+        - Use the formula above 
+    
+    c. Calculate the last IP (Broadcast Address)
+        - Add the total number of IPs minus 1 to the network address.
+        - For example, 10.0.0.0/20 has 4,096 IPs.
+        - The last IP:
+            - Start: 10.0.0.0
+            - End: 10.0.15.255 (since 0.0 to 15.255 is 4,096 addresses)
+    
+    Example Table:
+        
+        CIDR Block	        Total           IPs	First IP	        Last IP
+        10.0.0.0/16	        65,536	        10.0.0.0	            10.0.255.255
+        10.0.0.0/20	        4,096	        10.0.0.0	            10.0.15.255
+        192.168.1.0/24	    256	            192.168.1.0	            192.168.1.255
+        192.168.100.0/22	1,024	        192.168.100.0	        192.168.103.255
+
+
+04. Step-by-Step Example
+    - Given: 192.168.1.0/28
+
+        a. Calculate Total IPs:
+            32 - 28 = 4
+            2^4 = 16 IP Addresses
+        
+        b. Find the Range 
+            - First IP: 192.168.1.0
+            - Last IP: 192.168.1.15 (since 0 + 15 = 15)
+
+        So, 192.168.1.0/28 covers IPs from 192.168.1.0 to 192.168.1.15.
+
+
+05. Subnetting Example in AWS
+    - VPC CIDR block: 10.0.0.0/16 (65,536 IPs)
+    - Subnet 1: 10.0.0.0/24 (256 IPs: 10.0.0.0 to 10.0.0.255)
+    - Subnet 2: 10.0.1.0/24 (256 IPs: 10.0.1.0 to 10.0.1.255)
+    - Subnet 3: 10.0.2.0/24 (256 IPs: 10.0.2.0 to 10.0.2.255)
+    Each subnet must fit within the VPC’s overall range and not overlap with other subnets
+
+
+06. Quick Reference Table
+
+    CIDR	        IPs	                Example Range
+    /28	            16	                192.168.1.0 – 192.168.1.15
+    /24	            256	                192.168.1.0 – 192.168.1.255
+    /22	            1,024	            192.168.100.0 – 192.168.103.255
+    /16	            65,536	            10.0.0.0 – 10.0.255.255
+
+
+
