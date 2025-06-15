@@ -1,0 +1,133 @@
+01. You need to launch a Linux EC2 instance for a web application. How will you ensure only your team can SSH into the server?
+    - Create a security group allowing inbound SSH (port 22) only from your team’s IP range, and associate it with the instance. Use a unique 
+      key pair for secure access.
+
+
+02. You notice your EC2 instance’s root EBS volume is running out of space. What’s your approach to increase storage?
+    - Stop the instance, take a snapshot of the root volume, create a larger EBS volume from the snapshot, attach it as the root device, and 
+      resize the filesystem after booting
+
+
+03. Your application on EC2 needs to send emails reliably. Which AWS service should you use?
+    - Use Amazon Simple Email Service (SES) for scalable, cost-effective, and reliable email sending
+
+
+04. You want to automate the installation of Apache on every new EC2 instance at launch. How can you achieve this?
+    - Use EC2 user data to provide a shell script that installs Apache during instance initialization
+
+
+05. Your EC2 instance must access an S3 bucket securely. What is the best practice?
+    - Attach an IAM role to the instance with permissions to access the S3 bucket, avoiding hardcoded credentials
+
+
+06. You need to back up data from your EC2 instance regularly. What’s the simplest AWS-native way?
+    - Schedule EBS snapshots using Amazon Data Lifecycle Manager for automated backups
+
+
+07. You want to monitor CPU utilization on your EC2 instances. What AWS service do you use?
+    - Use Amazon CloudWatch to collect and visualize CPU metrics, and set up alarms if thresholds are crossed
+
+
+08. A web server running on EC2 must be accessible over HTTP and HTTPS. How do you configure this?
+    - Add inbound rules to the security group for ports 80 (HTTP) and 443 (HTTPS)
+
+
+09. You need to ensure your EC2 instance retains its public IP after a restart. What do you do?
+    - Allocate and associate an Elastic IP address with the instance
+
+
+10. How do you minimize cost for a development EC2 instance that is only needed during business hours?
+    - Automate stopping the instance outside business hours using Lambda or AWS Instance Scheduler
+
+
+------------------
+
+11. Your web app on EC2 is experiencing high CPU spikes during traffic surges. What’s your scaling strategy?
+    - Place instances in an Auto Scaling group with policies to launch new instances when CPU exceeds a threshold, and use an Application Load 
+      Balancer to distribute traffic
+
+
+12. You’re tasked with moving a running EC2 instance to a different Availability Zone. What’s your approach?
+    - Create an AMI or snapshot of the instance, launch a new instance in the target AZ from that AMI, and update DNS or Elastic IP as needed
+
+
+13. You need to provide shared, POSIX-compliant storage for multiple EC2 instances. What AWS service do you use?
+    - Use Amazon EFS (Elastic File System) for scalable, shared file storage across instances
+
+
+14. You want to ensure EC2 instances in a private subnet can access the internet for updates. How do you set this up?
+    - Deploy a NAT Gateway in a public subnet and update the private subnet’s route table to point internet-bound traffic to the NAT Gateway
+
+
+15. A batch job runs on EC2 and can tolerate interruptions. How can you save costs?
+    - Use Spot Instances for the batch job, as they are significantly cheaper and suitable for interruption-tolerant workloads
+
+
+16. Your company wants to enforce that all EC2 instances have encrypted EBS volumes. How do you ensure compliance?
+    - Use AWS Config rules to detect non-compliant instances and enforce EBS encryption by default
+
+
+17. How do you recover quickly if your EC2 instance becomes unresponsive due to a failed application update?
+    - Revert to a previous EBS snapshot or launch a new instance from a recent AMI backup
+
+
+18. You want to restrict SSH access to EC2 instances to only a specific corporate VPN. How do you configure this?
+    - Set the security group to allow SSH only from the VPN’s public IP address range
+
+
+19. You need to migrate an EC2-based application to another AWS region with minimal downtime. What’s your process?
+    - Create an AMI of the instance, copy it to the target region, launch a new instance from the AMI, and switch DNS or Elastic IP after validation
+
+
+20. How do you ensure that your EC2 instances are always running the latest OS patches?
+    - Use AWS Systems Manager Patch Manager to automate patching across your fleet
+
+
+------------------------------------
+
+21. You must design a highly available, scalable web application using EC2. What’s your architecture?
+    - Deploy EC2 instances in multiple AZs within an Auto Scaling group, fronted by an Application Load Balancer, and store session/data in Amazon 
+      RDS or DynamoDB for durability and high availability
+
+
+22. A microservices application needs to scale independently and support blue/green deployments. How do you design this on EC2?
+    - Deploy each microservice in its own Auto Scaling group and target group behind an Application Load Balancer using path-based routing. Use 
+      separate deployment pipelines for blue/green deployments
+
+
+23. You need to ensure that sensitive data on EC2 volumes is always encrypted, including backups and snapshots. How do you enforce this?
+    - Enable EBS encryption by default, use KMS-managed keys, and ensure snapshots are encrypted. Use IAM policies and AWS Config to audit 
+      compliance
+
+
+24. Your EC2-based application must withstand AZ failures without downtime. What’s your design?
+    - Deploy instances across multiple AZs, use an Auto Scaling group and an Elastic Load Balancer, and ensure data is stored in Multi-AZ 
+      services (e.g., RDS Multi-AZ, S3)
+
+
+25. You must migrate a legacy on-premises application to EC2 with minimal downtime. What’s your approach?
+    - Use AWS Application Migration Service (MGN) for lift-and-shift migration, perform testing in AWS, and schedule a final cutover during a 
+      low-traffic window
+
+
+26. A critical EC2 workload needs to meet strict RTO/RPO requirements. What’s your DR strategy?
+    - Implement cross-region AMI and snapshot replication, automate failover with CloudFormation or Elastic Disaster Recovery, and use Route 53 
+      for DNS failover
+
+
+27. You need to analyze and troubleshoot intermittent network connectivity issues on EC2. What AWS tools do you use?
+    - Use VPC Flow Logs for traffic analysis, CloudWatch for metrics, and AWS Systems Manager for instance-level diagnostics
+
+
+28. A regulated workload requires all EC2 activity to be auditable. How do you ensure compliance?
+    - Enable AWS CloudTrail for API logging, configure CloudWatch Logs for OS-level events, and use AWS Config for resource compliance tracking
+
+
+29. You want to optimize costs for a large EC2 fleet running mixed workloads (steady, burst, batch). What’s your approach?
+    - Use a blend of Reserved Instances or Savings Plans for steady workloads, On-Demand for unpredictable needs, and Spot Instances for 
+      batch/fault-tolerant jobs. Use Auto Scaling to manage instance types and counts
+
+
+30. A global web app on EC2 must deliver low latency to users worldwide. What AWS services and architecture do you use?
+    - Deploy EC2 instances in multiple regions, use Route 53 latency-based routing, front-end with CloudFront CDN, and replicate data using S3 
+      Cross-Region Replication or DynamoDB Global Tables
